@@ -5,5 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ArtistsRepository extends CrudRepository<Artist, Long> {
     Artist getArtistsByName(String name);
-
 }
