@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.util.Optional;
 
+import static org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter.toData;
 import static org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter.toDto;
 
 @Service
@@ -28,5 +29,15 @@ public class SongsServiceImpl implements SongsService {
             return null;
         }
         return toDto(byId.get());
+    }
+
+    @Override
+    public SongDto saveSong(SongDto songDto) {
+        return toDto(songsRepository.save(toData(songDto)));
+    }
+
+    @Override
+    public SongDto updateSong(SongDto songDto) {
+        return toDto(songsRepository.save(toData(songDto)));
     }
 }

@@ -6,7 +6,6 @@ import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepositor
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-
 import java.util.Optional;
 
 import static org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter.toData;
@@ -21,7 +20,7 @@ public class ArtistsServiceImpl implements ArtistsService {
     @Override
     public ArtistDto getArtistsById(Long id) {
         Optional<Artist> byId = artistsRepository.findById(id);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             return null;
         }
         return toDto(byId.get());
