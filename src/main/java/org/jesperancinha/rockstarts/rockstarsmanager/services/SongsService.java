@@ -10,4 +10,6 @@ public interface SongsService {
     SongDto saveSong(SongDto songDto);
 
     SongDto updateSong(SongDto songDto);
+
+    void deleteById(Long id);
 }

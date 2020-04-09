@@ -33,12 +33,24 @@ curl -H "Content-Type: application/json" -X POST --data "{\"Name\": \"God is a w
 
 ### PUT requests
 
-- Post artist
+- Put artist
 ```bash
 curl -H "Content-Type: application/json" -X PUT --data "{\"Name\": \"Ariana Grande\"}" http://localhost:8080/rockstars/artists/save/200
 ```
 
-- Post song
+- Put song
 ```bash
 curl -H "Content-Type: application/json" -X PUT --data "{\"Name\": \"God is a woman\",\"Year\": 2018,\"Artist\": \"Ariana Grande\", \"Shortname\": \"godisawoman\",\"Bpm\": 145,\"Duration\": 197000,\"Genre\": \"Pop\",\"Album\": \"Sweetener\"}" http://localhost:8080/rockstars/songs/save/1901
+```
+
+### DELETE requests
+
+- Delete artist
+```bash
+curl -X DELETE http://localhost:8080/rockstars/artists/200
+```
+
+- Delete
+```bash
+curl -X DELETE http://localhost:8080/rockstars/songs/1901
 ```
