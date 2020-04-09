@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RockstarsManagerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RockstarsManagerApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(RockstarsManagerApplication.class, args);
+    }
 }
