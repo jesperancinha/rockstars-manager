@@ -4,5 +4,5 @@ import org.jesperancinha.rockstarts.rockstarsmanager.model.Song;
 import org.springframework.data.repository.CrudRepository;
 
 public interface SongsRepository extends CrudRepository<Song, Long> {
-    Song findSongByName(String songName);
+    Song getSongsByName(String name);
 }

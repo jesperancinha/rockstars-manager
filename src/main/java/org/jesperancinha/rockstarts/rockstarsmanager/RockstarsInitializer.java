@@ -34,7 +34,7 @@ public class RockstarsInitializer implements CommandLineRunner {
     @Inject
     private ArtistsRepository artistsRepository;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void run(String... args) throws Exception {
