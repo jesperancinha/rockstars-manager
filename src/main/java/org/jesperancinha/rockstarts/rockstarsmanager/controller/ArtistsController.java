@@ -25,6 +25,7 @@ public class ArtistsController {
             Long id) {
         return artistsService.getArtistsById(id);
     }
+
     @GetMapping("/filter/name/{artistName}")
     public ArtistDto getArtistByName(
         @PathVariable
@@ -39,10 +40,13 @@ public class ArtistsController {
         return artistsService.saveArtist(artistDto);
     }
 
-    @PutMapping
+    @PutMapping("/save/{id}")
     public ArtistDto putArtist(
         @RequestBody
-            ArtistDto artistDto) {
+            ArtistDto artistDto,
+        @PathVariable
+            Long id) {
+        artistDto.setId(id);
         return artistsService.updateArtist(artistDto);
     }
 
