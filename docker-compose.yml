@@ -14,3 +14,9 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=rockstars
     ports:
       - "5432:5432"
+  rockstars:
+    hostname: rockstars
+    build:
+      context: .
+    ports:
+      - "8080:8080"
