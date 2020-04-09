@@ -10,4 +10,6 @@ public interface ArtistsService {
     ArtistDto saveArtist(ArtistDto artistDto);
 
     ArtistDto getArtistsById(Long id);
+
+    void deleteById(Long id);
 }

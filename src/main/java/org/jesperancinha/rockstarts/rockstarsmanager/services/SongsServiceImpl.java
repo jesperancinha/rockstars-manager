@@ -40,4 +40,9 @@ public class SongsServiceImpl implements SongsService {
     public SongDto updateSong(SongDto songDto) {
         return toDto(songsRepository.save(toData(songDto)));
     }
+
+    @Override
+    public void deleteById(Long id) {
+        songsRepository.deleteById(id);
+    }
 }

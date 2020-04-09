@@ -27,6 +27,11 @@ public class ArtistsServiceImpl implements ArtistsService {
     }
 
     @Override
+    public void deleteById(Long id) {
+        artistsRepository.deleteById(id);
+    }
+
+    @Override
     public ArtistDto getArtistsByName(String artistName) {
         return toDto(artistsRepository.getArtistsByName(artistName));
     }

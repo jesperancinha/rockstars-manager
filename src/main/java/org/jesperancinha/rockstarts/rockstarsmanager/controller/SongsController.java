@@ -2,6 +2,7 @@ package org.jesperancinha.rockstarts.rockstarsmanager.controller;
 
 import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
 import org.jesperancinha.rockstarts.rockstarsmanager.services.SongsService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,4 +50,12 @@ public class SongsController {
         songDto.setId(id);
         return songsService.updateSong(songDto);
     }
+
+    @DeleteMapping("{id}")
+    public void deleteById(
+        @PathVariable
+            Long id) {
+        songsService.deleteById(id);
+    }
+
 }
