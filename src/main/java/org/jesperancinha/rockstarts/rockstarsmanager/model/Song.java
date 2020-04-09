@@ -1,13 +1,16 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.model;
 
 import lombok.Data;
+import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
-public class Songs {
+@Table(name = "songs")
+public class Song {
 
     @Id
     private Long id;

@@ -1,7 +1,8 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.services;
 
-import org.springframework.stereotype.Service;
+import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
+import org.jesperancinha.rockstarts.rockstarsmanager.model.Artist;
 
-@Service
-public class ArtistsService {
+public interface ArtistsService {
+    ArtistDto getArtistsByName(String artistName);
 }

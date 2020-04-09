@@ -1,7 +1,7 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.services;
 
-import org.springframework.stereotype.Service;
+import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
 
-@Service
-public class SongsService {
+public interface SongsService {
+    SongDto getSongByName(String songName);
 }

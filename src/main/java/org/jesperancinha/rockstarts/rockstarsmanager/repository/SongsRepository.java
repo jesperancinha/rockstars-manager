@@ -1,7 +1,8 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.repository;
 
-import org.jesperancinha.rockstarts.rockstarsmanager.model.Songs;
+import org.jesperancinha.rockstarts.rockstarsmanager.model.Song;
 import org.springframework.data.repository.CrudRepository;
 
-public interface SongsRepository extends CrudRepository<Songs, Long> {
+public interface SongsRepository extends CrudRepository<Song, Long> {
+    Song findSongByName(String songName);
 }
