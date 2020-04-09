@@ -20,6 +20,7 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <javax.inject.version>1</javax.inject.version>
         <commons-io.version>2.6</commons-io.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencies>
@@ -69,6 +70,13 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+            <version>${h2.version}</version>
         </dependency>
 
     </dependencies>
