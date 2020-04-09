@@ -20,7 +20,6 @@ public class ArtistsController {
     public ArtistDto getArtistByName(
         @PathVariable
             String artistName) {
-        return artistsService.getArtistsByName(artistName)
-            .toDto();
+        return artistsService.getArtistsByName(artistName);
     }
 }
