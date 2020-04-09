@@ -1,3 +1,3 @@
 # rockstars-manager
 
-This applicastion is a rockstars manager
+This application is a rockstars manager
