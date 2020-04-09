@@ -16,7 +16,7 @@ public class SongsController {
     private SongsService songsService;
 
     @GetMapping("{songName}")
-    public SongDto getSongByName(String songName){
+    public SongDto getSongByName(String songName) {
         return songsService.getSongByName(songName);
     }
 }

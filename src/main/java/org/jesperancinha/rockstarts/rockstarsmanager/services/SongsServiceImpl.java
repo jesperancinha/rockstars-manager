@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 @Service
-public class SongsServiceImpl implements SongsService{
+public class SongsServiceImpl implements SongsService {
 
     @Inject
     private SongsRepository songsRepository;
+
     @Override
     public SongDto getSongByName(String songName) {
         return SongConverter.toDto(songsRepository.findSongByName(songName));
