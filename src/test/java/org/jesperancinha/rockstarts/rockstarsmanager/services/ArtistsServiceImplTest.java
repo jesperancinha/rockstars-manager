@@ -73,10 +73,23 @@ class ArtistsServiceImplTest {
     }
 
     @Test
-    void givenArtistOnDb_whenDelete_thenCallsDelete() {
-        artistsService.deleteById(1L);
+    void givenArtist_whenSave_thenCallSave() {
+        final Artist mock = mock(Artist.class);
+        when(mock.getId()).thenReturn(10101L);
+        when(mock.getName()).thenReturn(MABEL);
+        final ArtistDto dto = mock(ArtistDto.class);
+        when(dto.getId()).thenReturn(10101L);
+        when(dto.getName()).thenReturn(MABEL);
+        when(artistsRepository.save(any())).thenReturn(mock);
 
-        verify(artistsRepository, only()).deleteById(1L);
+        final ArtistDto artistDto = artistsService.saveArtist(dto);
+
+        assertThat(artistDto.getId()).isEqualTo(dto.getId());
+        assertThat(artistDto.getName()).isEqualTo(dto.getName());
+        verify(artistsRepository, only()).save(artistArgumentCaptor.capture());
+        Artist value = artistArgumentCaptor.getValue();
+        assertThat(value.getId()).isSameAs(dto.getId());
+        assertThat(value.getName()).isSameAs(dto.getName());
     }
 
     @Test
@@ -100,23 +113,9 @@ class ArtistsServiceImplTest {
     }
 
     @Test
-    void givenArtist_whenSave_thenCallSave() {
-        final Artist mock = mock(Artist.class);
-        when(mock.getId()).thenReturn(10101L);
-        when(mock.getName()).thenReturn(MABEL);
-        final ArtistDto dto = mock(ArtistDto.class);
-        when(dto.getId()).thenReturn(10101L);
-        when(dto.getName()).thenReturn(MABEL);
-        when(artistsRepository.save(any())).thenReturn(mock);
+    void givenArtistOnDb_whenDelete_thenCallsDelete() {
+        artistsService.deleteById(1L);
 
-        final ArtistDto artistDto = artistsService.saveArtist(dto);
-
-        assertThat(artistDto.getId()).isEqualTo(dto.getId());
-        assertThat(artistDto.getName()).isEqualTo(dto.getName());
-        verify(artistsRepository, only()).save(artistArgumentCaptor.capture());
-        Artist value = artistArgumentCaptor.getValue();
-        assertThat(value.getId()).isSameAs(dto.getId());
-        assertThat(value.getName()).isSameAs(dto.getName());
+        verify(artistsRepository, only()).deleteById(1L);
     }
-
 }

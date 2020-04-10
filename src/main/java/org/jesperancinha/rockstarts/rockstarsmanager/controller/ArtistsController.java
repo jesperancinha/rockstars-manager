@@ -2,6 +2,7 @@ package org.jesperancinha.rockstarts.rockstarsmanager.controller;
 
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
 import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,20 +12,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/artists")
 public class ArtistsController {
 
-    @Inject
-    private ArtistsService artistsService;
+    private final ArtistsService artistsService;
+
+    public ArtistsController(ArtistsService artistsService) {
+        this.artistsService = artistsService;
+    }
 
     @GetMapping("{id}")
-    public ArtistDto getArtistsById(
+    public ResponseEntity<ArtistDto> getArtistsById(
         @PathVariable
             Long id) {
-        return artistsService.getArtistsById(id);
+        final ArtistDto artistsById = artistsService.getArtistsById(id);
+        if (Objects.isNull(artistsById)) {
+            return ResponseEntity.notFound()
+                .build();
+        }
+        return ResponseEntity.ok(artistsById);
     }
 
     @GetMapping("/filter/name/{artistName}")
@@ -41,7 +50,7 @@ public class ArtistsController {
         return artistsService.saveArtist(artistDto);
     }
 
-    @PutMapping("/save/{id}")
+    @PutMapping("{id}")
     public ArtistDto putArtist(
         @RequestBody
             ArtistDto artistDto,

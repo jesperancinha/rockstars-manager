@@ -41,7 +41,7 @@ public class SongsController {
         return songsService.saveSong(songDto);
     }
 
-    @PutMapping("/save/{id}")
+    @PutMapping("/{id}")
     public SongDto putArtist(
         @RequestBody
             SongDto songDto,
