@@ -33,7 +33,7 @@ public class ArtistsServiceImpl implements ArtistsService {
 
     @Override
     public ArtistDto getArtistsByName(String artistName) {
-        return toDto(artistsRepository.getArtistsByName(artistName));
+        return toDto(artistsRepository.findArtistsByName(artistName));
     }
 
     @Override
