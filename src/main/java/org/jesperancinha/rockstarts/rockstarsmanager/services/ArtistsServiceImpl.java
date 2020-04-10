@@ -5,7 +5,6 @@ import org.jesperancinha.rockstarts.rockstarsmanager.model.Artist;
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
 import java.util.Optional;
 
 import static org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter.toData;
@@ -14,8 +13,11 @@ import static org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsCo
 @Service
 public class ArtistsServiceImpl implements ArtistsService {
 
-    @Inject
-    private ArtistsRepository artistsRepository;
+    private final ArtistsRepository artistsRepository;
+
+    public ArtistsServiceImpl(ArtistsRepository artistsRepository) {
+        this.artistsRepository = artistsRepository;
+    }
 
     @Override
     public ArtistDto getArtistsById(Long id) {
