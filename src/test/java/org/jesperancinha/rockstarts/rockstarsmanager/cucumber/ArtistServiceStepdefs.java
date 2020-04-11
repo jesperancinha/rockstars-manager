@@ -27,13 +27,14 @@ public class ArtistServiceStepdefs {
 
     private List<ArtistDto> results = new ArrayList<>();
 
-    @Given("the following artist:")
-    public void theFollowingArtist(List<ArtistDto> artistDtos) {
+    @Given("^the following artist:$")
+    public void the_following_artist(List<ArtistDto> artistDtos) throws Throwable {
         this.artistDtos = artistDtos;
+
     }
 
-    @When("calling save method")
-    public void callingSaveMethod() {
+    @When("^calling save method$")
+    public void calling_save_method() throws Throwable {
         artistDtos.forEach(artistDto -> {
             Artist artist = toData(artistDto);
             when(artistsRepository.save(artist)).thenReturn(artist);
@@ -43,10 +44,11 @@ public class ArtistServiceStepdefs {
     }
 
     @Then("^we get artist with names:$")
-    public void weGetArtistWithName(List<String> expectedArtistNames) {
+    public void we_get_artist_with_names(List<String> expectedArtistNames) {
         for (int i = 0; i < artistDtos.size(); i++) {
             assertThat(artistDtos.get(i)
                 .getName()).isEqualTo(expectedArtistNames.get(i));
         }
     }
+
 }

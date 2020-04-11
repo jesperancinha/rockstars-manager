@@ -1,3 +1,4 @@
+@ArtistsSaveFeature
 Feature: Basic Arithmetic
 
   Scenario: Save artist

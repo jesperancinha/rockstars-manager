@@ -22,11 +22,8 @@ public class ArtistsController {
 
     private final ArtistsService artistsService;
 
-    private final PasswordEncoder passwordEncoder;
-
-    public ArtistsController(ArtistsService artistsService, PasswordEncoder passwordEncoder) {
+    public ArtistsController(ArtistsService artistsService) {
         this.artistsService = artistsService;
-        this.passwordEncoder = passwordEncoder;
     }
 
 

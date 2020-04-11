@@ -10,6 +10,7 @@ import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository;
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.SongsRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -26,6 +27,7 @@ import java.util.function.Predicate;
 
 @Component
 @Slf4j
+@Profile({"local","prod"})
 public class RockstarsInitializer implements CommandLineRunner {
 
     public static final Predicate<SongDto> SONG_DTO_PREDICATE = songDto -> songDto.getGenre()
