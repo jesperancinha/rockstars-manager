@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Component
 @Primary
-@Profile({"prod","local"})
+@Profile({ "prod", "local" })
 public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
     private final UserRepository userRepository;
@@ -47,7 +47,7 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
             final User user = appUser.get();
             final String providedUserEmail = authentication.getName();
             final String providedUserPassword = (String) authentication.getCredentials();
-            if (providedUserEmail.equalsIgnoreCase(user.getEmail()) &&  passwordEncoder.matches( providedUserPassword, user.getPassword())) {
+            if (providedUserEmail.equalsIgnoreCase(user.getEmail()) && passwordEncoder.matches(providedUserPassword, user.getPassword())) {
                 return new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), Collections.singleton(new SimpleGrantedAuthority(user.getRole())));
             }
         }

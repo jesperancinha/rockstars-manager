@@ -27,7 +27,7 @@ import java.util.function.Predicate;
 
 @Component
 @Slf4j
-@Profile({"local","prod"})
+@Profile({ "local", "prod" })
 public class RockstarsInitializer implements CommandLineRunner {
 
     public static final Predicate<SongDto> SONG_DTO_PREDICATE = songDto -> songDto.getGenre()

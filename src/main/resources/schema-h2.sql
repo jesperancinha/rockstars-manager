@@ -30,11 +30,11 @@ create table songs
 
 create table users
 (
-    email varchar(255) not null
+    email    varchar(255) not null
         constraint users_pkey
             primary key,
-    date timestamp,
-    name varchar(255),
+    date     timestamp,
+    name     varchar(255),
     password varchar(255),
-    role varchar(255)
+    role     varchar(255)
 );

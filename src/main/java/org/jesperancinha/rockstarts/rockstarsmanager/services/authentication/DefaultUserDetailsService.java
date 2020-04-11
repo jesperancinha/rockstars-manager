@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 @Service
-@Profile({"prod","local"})
+@Profile({ "prod", "local" })
 public class DefaultUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
