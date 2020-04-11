@@ -78,7 +78,7 @@ Please have docker desktop running. Finally run:
 ./build.sh
 ```
 
-## Refereneces
+## References
 
 -   [Cucumber 10 Minute Tutorial](https://cucumber.io/docs/guides/10-minute-tutorial/)
 -   [Cucumber Tests in Spring Boot with Dependency Injection](https://thepracticaldeveloper.com/2018/03/31/cucumber-tests-spring-boot-dependency-injection/)
