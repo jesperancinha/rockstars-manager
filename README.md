@@ -4,6 +4,7 @@ This application is a rockstars manager
 
 ## RESTfull requests
 
+NOTE: No OAuth for the moment to keep it simple
 ### GET Requests
 
 - Get artist by name
@@ -54,7 +55,12 @@ curl -X DELETE http://localhost:8080/rockstars/artists/200
 ```bash
 curl -X DELETE http://localhost:8080/rockstars/songs/1901
 ```
+### OAUTH
 
+```bash
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=password&username=jofisaes@gmail.com&password=123&client_id=rockstars-client&client_secret=rockstars&scope=read&redirect_uri=http://localhost:8080/oauth" http://localhost:8080/rockstars/oauth/token
+curl -H "Authorization: Bearer TOKEN" http://localhost:8080/rockstars/artists/200
+```
 ## Refereneces
 
 -   [Cucumber 10 Minute Tutorial](https://cucumber.io/docs/guides/10-minute-tutorial/)

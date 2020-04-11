@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 @Configuration
 @EnableResourceServer
-@Profile({ "test", "local" })
+@Profile({ "test" })
 public class ResourceServerConfigTest extends ResourceServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "resource_id";

@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("prod")
 public class TokenStoreConfig {
 
     private final DataSource dataSource;
