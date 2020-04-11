@@ -23,6 +23,8 @@
         <h2.version>1.4.200</h2.version>
         <cucumber.version>1.2.6</cucumber.version>
         <spring-boot-security.version>2.2.2.RELEASE</spring-boot-security.version>
+        <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
+        <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
     </properties>
 
     <dependencies>
@@ -119,8 +121,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
