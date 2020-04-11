@@ -18,31 +18,35 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @Component
 @Slf4j
 public class RockstarsInitializer implements CommandLineRunner {
 
-    @Inject
-    private SongsRepository songsRepository;
+    public static final Predicate<SongDto> SONG_DTO_PREDICATE = songDto -> songDto.getGenre()
+        .equalsIgnoreCase("Metal");
+    public static final String HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON = "https://www.teamrockstars.nl/sites/default/files/artists.json";
+    public static final String HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON = "https://www.teamrockstars.nl/sites/default/files/songs.json";
 
-    @Inject
-    private ArtistsRepository artistsRepository;
-
+    private final SongsRepository songsRepository;
+    private final ArtistsRepository artistsRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public RockstarsInitializer(SongsRepository songsRepository, ArtistsRepository artistsRepository) {
+        this.songsRepository = songsRepository;
+        this.artistsRepository = artistsRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {
-        final String artistsUri = "https://www.teamrockstars.nl/sites/default/files/artists.json";
-        final String songsUri = "https://www.teamrockstars.nl/sites/default/files/songs.json";
 
-        ResponseEntity<ArtistDto[]> allArtists = getAllArtists(artistsUri);
-        ResponseEntity<SongDto[]> allSongs = getAllSongs(songsUri);
+        final ResponseEntity<ArtistDto[]> allArtists = getAllArtists();
+        final ResponseEntity<SongDto[]> allSongs = getAllSongs();
 
         Optional.of(allArtists)
             .flatMap(response -> Optional.ofNullable(response.getBody()))
@@ -51,20 +55,21 @@ public class RockstarsInitializer implements CommandLineRunner {
         Optional.of(allSongs)
             .flatMap(response -> Optional.ofNullable(response.getBody()))
             .ifPresent(songs -> Arrays.stream(songs)
+                .filter(SONG_DTO_PREDICATE)
                 .forEach(songDto -> songsRepository.save(SongConverter.toData(songDto))));
     }
 
-    private ResponseEntity<ArtistDto[]> getAllArtists(String artistsUri) throws IOException {
+    private ResponseEntity<ArtistDto[]> getAllArtists() throws IOException {
         try {
-            return fetchResponseEntity(artistsUri, ArtistDto[].class);
+            return fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON, ArtistDto[].class);
         } catch (Exception e) {
             return ResponseEntity.of(Optional.of(objectMapper.readValue(IOUtils.toString(getClass().getResourceAsStream("/artists.json")), ArtistDto[].class)));
         }
     }
 
-    private ResponseEntity<SongDto[]> getAllSongs(String songsUri) throws IOException {
+    private ResponseEntity<SongDto[]> getAllSongs() throws IOException {
         try {
-            return fetchResponseEntity(songsUri, SongDto[].class);
+            return fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON, SongDto[].class);
         } catch (Exception e) {
             return ResponseEntity.of(Optional.of(objectMapper.readValue(IOUtils.toString(getClass().getResourceAsStream("/songs.json.json")), SongDto[].class)));
         }

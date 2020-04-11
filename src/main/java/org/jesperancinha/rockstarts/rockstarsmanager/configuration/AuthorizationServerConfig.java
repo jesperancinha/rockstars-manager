@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-@Profile("prod")
+@Profile({ "prod", "local" })
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private static final String CLIENT_ID = "rockstars-client";

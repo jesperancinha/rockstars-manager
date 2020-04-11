@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
 
 @Configuration
 @EnableResourceServer
-@Profile("prod")
+@Profile({"prod","local"})
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "resource_id";
@@ -24,9 +24,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/rockstars/users/**")
+            .antMatchers("/users/**")
             .permitAll()
-            .antMatchers("/rockstars/artists/**", "/rockstars/songs/**")
+            .antMatchers("/artists/**", "/songs/**")
             .authenticated()
             .and()
             .exceptionHandling()
