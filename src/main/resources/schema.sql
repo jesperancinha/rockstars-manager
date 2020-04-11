@@ -8,7 +8,7 @@ drop table if exists oauth_refresh_token;
 
 drop table if exists oauth_access_token;
 
-drop sequence  hibernate_sequence;
+drop sequence if exists hibernate_sequence;
 
 create sequence hibernate_sequence;
 

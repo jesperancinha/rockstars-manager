@@ -1,6 +1,6 @@
 # rockstars-manager
 
-This application is a rockstars manager
+This application is a Rockstars manager
 
 ## RESTfull requests
 
@@ -61,6 +61,23 @@ curl -X DELETE http://localhost:8080/rockstars/songs/1901
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=password&username=jofisaes@gmail.com&password=123&client_id=rockstars-client&client_secret=rockstars&scope=read&redirect_uri=http://localhost:8080/oauth" http://localhost:8080/rockstars/oauth/token
 curl -H "Authorization: Bearer TOKEN" http://localhost:8080/rockstars/artists/200
 ```
+
+## Docker images
+
+This project makes use of the following docker images:
+
+[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-build-jdk-14)](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14)
+
+[![dockeri.co](https://dockeri.co/image/_/postgres)](https://hub.docker.com/_/postgres)
+
+## Running everything
+
+Please have docker desktop running. Finally run:
+
+```bash
+./build.sh
+```
+
 ## Refereneces
 
 -   [Cucumber 10 Minute Tutorial](https://cucumber.io/docs/guides/10-minute-tutorial/)
