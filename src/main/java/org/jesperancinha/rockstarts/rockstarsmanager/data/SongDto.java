@@ -13,7 +13,6 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class SongDto {
 
     @Id

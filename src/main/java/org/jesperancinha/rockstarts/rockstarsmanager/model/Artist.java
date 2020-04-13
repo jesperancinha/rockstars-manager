@@ -14,9 +14,9 @@ import javax.persistence.Table;
 @Entity
 @Data
 @Builder
-@Table(name = "artists")
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "artists")
 public class Artist {
 
     @Id
