@@ -1,4 +1,4 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.model;
+package org.jesperancinha.rockstarts.rockstarsmanager.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

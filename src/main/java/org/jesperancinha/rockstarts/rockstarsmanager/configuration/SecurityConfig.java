@@ -1,6 +1,5 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.configuration;
 
-import org.jesperancinha.rockstarts.rockstarsmanager.services.authentication.DefaultUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

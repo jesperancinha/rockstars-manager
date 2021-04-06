@@ -1,7 +1,5 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.services.authentication;
+package org.jesperancinha.rockstarts.rockstarsmanager.configuration;
 
-import org.jesperancinha.rockstarts.rockstarsmanager.model.User;
-import org.jesperancinha.rockstarts.rockstarsmanager.repository.UserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
