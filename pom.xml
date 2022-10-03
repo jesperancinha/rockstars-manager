@@ -22,7 +22,7 @@
         <commons-io.version>2.6</commons-io.version>
         <h2.version>1.4.200</h2.version>
         <cucumber.version>1.2.6</cucumber.version>
-        <spring-boot-security.version>2.2.2.RELEASE</spring-boot-security.version>
+        <spring-boot-security.version>2.6.8</spring-boot-security.version>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
     </properties>
