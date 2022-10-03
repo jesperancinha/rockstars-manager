@@ -9,7 +9,7 @@ create table artists
     id   bigint not null
         constraint artists_pkey
             primary key,
-    name varchar(255)
+    `name` varchar(255)
 );
 
 create table songs
@@ -22,10 +22,10 @@ create table songs
     bpm        bigint,
     duration   bigint,
     genre      varchar(255),
-    name       varchar(255),
+    `name`       varchar(255),
     short_name varchar(255),
     spotify_id varchar(255),
-    year       integer
+    `year`       integer
 );
 
 create table users
@@ -33,8 +33,8 @@ create table users
     email    varchar(255) not null
         constraint users_pkey
             primary key,
-    date     timestamp,
-    name     varchar(255),
+    `date`     timestamp,
+    `name`     varchar(255),
     password varchar(255),
-    role     varchar(255)
+    `role`     varchar(255)
 );
