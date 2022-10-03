@@ -20,7 +20,7 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <javax.inject.version>1</javax.inject.version>
         <commons-io.version>2.6</commons-io.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
         <cucumber.version>1.2.6</cucumber.version>
         <spring-boot-security.version>2.2.2.RELEASE</spring-boot-security.version>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
