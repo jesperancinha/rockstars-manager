@@ -1,11 +1,18 @@
+
 package org.jesperancinha.rockstarts.rockstarsmanager.cucumber;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-import org.junit.runner.RunWith;
+import io.cucumber.spring.CucumberContextConfiguration;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/cucumber",
-    tags = "@ArtistsSaveFeature")
+import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("cucumber")
+@CucumberContextConfiguration
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class ArtistsServiceImplCucumberTest {
 }
