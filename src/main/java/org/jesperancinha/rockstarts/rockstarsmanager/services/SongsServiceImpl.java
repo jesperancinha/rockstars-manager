@@ -5,7 +5,6 @@ import org.jesperancinha.rockstarts.rockstarsmanager.model.Song;
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.SongsRepository;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
 import java.util.Optional;
 
 import static org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter.toData;
@@ -14,8 +13,11 @@ import static org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConve
 @Service
 public class SongsServiceImpl implements SongsService {
 
-    @Inject
-    private SongsRepository songsRepository;
+    private final SongsRepository songsRepository;
+
+    public SongsServiceImpl(SongsRepository songsRepository) {
+        this.songsRepository = songsRepository;
+    }
 
     @Override
     public SongDto getSongByName(String songName) {

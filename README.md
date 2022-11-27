@@ -1,10 +1,12 @@
 # Rockstars Manager
 
+---- Under Construction ----
+
 This application is a Rockstars manager
+
 
 ## RESTfull requests
 
-NOTE: No OAuth for the moment to keep it simple
 ### GET Requests
 
 -   Get artist by name

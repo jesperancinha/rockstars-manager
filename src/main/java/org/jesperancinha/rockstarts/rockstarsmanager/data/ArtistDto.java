@@ -3,7 +3,7 @@ package org.jesperancinha.rockstarts.rockstarsmanager.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 @Data
 @Builder

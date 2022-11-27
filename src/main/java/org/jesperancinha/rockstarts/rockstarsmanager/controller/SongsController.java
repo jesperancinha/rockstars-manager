@@ -2,50 +2,42 @@ package org.jesperancinha.rockstarts.rockstarsmanager.controller;
 
 import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
 import org.jesperancinha.rockstarts.rockstarsmanager.services.SongsService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/songs")
 public class SongsController {
 
-    @Inject
+    @Autowired
     private SongsService songsService;
 
     @GetMapping("{id}")
     public SongDto getSongById(
-        @PathVariable
+            @PathVariable
             Long id) {
         return songsService.getSongById(id);
     }
 
     @GetMapping("/filter/name/{songName}")
     public SongDto getSongByName(
-        @PathVariable
+            @PathVariable
             String songName) {
         return songsService.getSongByName(songName);
     }
 
     @PostMapping
     public SongDto saveSong(
-        @RequestBody
+            @RequestBody
             SongDto songDto) {
         return songsService.saveSong(songDto);
     }
 
     @PutMapping("/{id}")
     public SongDto putArtist(
-        @RequestBody
+            @RequestBody
             SongDto songDto,
-        @PathVariable
+            @PathVariable
             Long id) {
         songDto.setId(id);
         return songsService.updateSong(songDto);
@@ -53,7 +45,7 @@ public class SongsController {
 
     @DeleteMapping("{id}")
     public void deleteById(
-        @PathVariable
+            @PathVariable
             Long id) {
         songsService.deleteById(id);
     }

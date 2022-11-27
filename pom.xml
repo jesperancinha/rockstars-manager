@@ -17,10 +17,8 @@
         <commons-io.version>2.11.0</commons-io.version>
         <h2.version>2.1.214</h2.version>
         <cucumber.version>7.8.0</cucumber.version>
-        <spring-boot-security.version>3.0.0</spring-boot-security.version>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
-        <spring-security-oauth2-autoconfigure.version>2.6.8</spring-security-oauth2-autoconfigure.version>
         <spring-boot-starter-parent.version>3.0.0</spring-boot-starter-parent.version>
         <cucumber-bom.version>7.9.0</cucumber-bom.version>
         <junit-bom.version>5.9.1</junit-bom.version>
@@ -41,16 +39,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>${spring-security-oauth2-autoconfigure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring-boot-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -77,17 +65,22 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.17.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>1.17.6</version>
+        </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
