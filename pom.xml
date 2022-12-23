@@ -19,7 +19,7 @@
         <cucumber.version>7.8.0</cucumber.version>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
-        <spring-boot-starter-parent.version>3.0.0</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.0.1</spring-boot-starter-parent.version>
         <cucumber-bom.version>7.10.1</cucumber-bom.version>
         <junit-bom.version>5.9.1</junit-bom.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
