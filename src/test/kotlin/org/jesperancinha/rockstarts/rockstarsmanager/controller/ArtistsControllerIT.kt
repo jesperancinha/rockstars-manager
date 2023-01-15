@@ -22,10 +22,8 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.transaction.annotation.Transactional
 
-@ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
 @Transactional
 class ArtistsControllerIT @Autowired constructor(

@@ -6,13 +6,12 @@ import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
 import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.SongsRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
 class ArtistsService(private val artistsRepository: ArtistsRepository) {
-    fun getArtistsById(id: Long) = artistsRepository.findById(id).let {
-        if (it.isEmpty) null else it.get().toDto()
-    }
+    fun getArtistsById(id: Long) = artistsRepository.findByIdOrNull(id)?.toDto()
 
     fun deleteById(id: Long) = artistsRepository.deleteById(id)
 

@@ -26,16 +26,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @ContextConfiguration(initializers = [DockerPostgresDataInitializer::class])
 class ArtistsControllerTest {
     @MockBean
-    private val artistsService: ArtistsService? = null
+   lateinit var artistsService: ArtistsService
 
     @Autowired
-    private val mockMvc: MockMvc? = null
+    lateinit var mockMvc: MockMvc
     private val objectMapper = ObjectMapper()
 
     @Test
     @Throws(Exception::class)
     fun givenArtistOnDb_whenGettingArtist_thenReturnArtistNoError() {
-        mockMvc!!.perform(MockMvcRequestBuilders.get("/rockstars/artists/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rockstars/artists/1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isNotFound)
     }
@@ -47,8 +47,8 @@ class ArtistsControllerTest {
             id = 10101L,
             name = DUA_LIPA
         )
-        Mockito.`when`(artistsService!!.getArtistsByName(DUA_LIPA)).thenReturn(artistDto)
-        mockMvc!!.perform(MockMvcRequestBuilders.get("/artists/filter/name/DuaLipa"))
+        Mockito.`when`(artistsService.getArtistsByName(DUA_LIPA)).thenReturn(artistDto)
+        mockMvc.perform(MockMvcRequestBuilders.get("/artists/filter/name/DuaLipa"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
@@ -60,8 +60,8 @@ class ArtistsControllerTest {
             id = 10101L,
             name = ARIANA_GRANDE
         )
-        Mockito.`when`(artistsService!!.saveArtist(ArgumentMatchers.any())).thenReturn(artistDto)
-        mockMvc!!.perform(
+        Mockito.`when`(artistsService.saveArtist(artistDto)).thenReturn(artistDto)
+        mockMvc.perform(
             MockMvcRequestBuilders.post("/artists").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(artistDto))
         )
@@ -76,8 +76,8 @@ class ArtistsControllerTest {
             id = 10101L,
             name = MABEL
         )
-        Mockito.`when`(artistsService!!.updateArtist(ArgumentMatchers.any())).thenReturn(artistDto)
-        mockMvc!!.perform(
+        Mockito.`when`(artistsService.updateArtist(artistDto)).thenReturn(artistDto)
+        mockMvc.perform(
             MockMvcRequestBuilders.put("/artists/10101").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(artistDto))
         )
@@ -88,7 +88,7 @@ class ArtistsControllerTest {
     @Test
     @Throws(Exception::class)
     fun givenArtistOnDb_whenDelete_thenCallsDelete() {
-        mockMvc!!.perform(MockMvcRequestBuilders.delete("/artists/1"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/artists/1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isOk)
     }

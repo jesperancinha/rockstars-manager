@@ -6,8 +6,8 @@ import lombok.Builder
 import lombok.Data
 import lombok.NoArgsConstructor
 
-@Table
 @Entity
+@Table(name = "artists")
 data class Artist(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
