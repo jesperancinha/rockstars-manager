@@ -1,6 +1,5 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.services
 
-import org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter
 import org.jesperancinha.rockstarts.rockstarsmanager.converters.toData
 import org.jesperancinha.rockstarts.rockstarsmanager.converters.toDto
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
@@ -26,20 +25,18 @@ class ArtistsService(private val artistsRepository: ArtistsRepository) {
 
 @Service
 class SongsService(private val songsRepository: SongsRepository) {
-    fun getSongByName(songName: String?): SongDto? {
-        return SongConverter.toDto(songsRepository.getSongsByName(songName))
+    fun getSongByName(songName: String): SongDto {
+        return songsRepository.getSongsByName(songName).toDto()
     }
 
-    fun getSongById(id: Long): SongDto? {
-        val byId = songsRepository.findById(id)
-        return if (byId.isEmpty) {
-            null
-        } else SongConverter.toDto(byId.get())
-    }
+    fun getSongById(id: Long): SongDto? = songsRepository.findById(id)
+        .let {
+            if (it.isEmpty) null else it.get().toDto()
+        }
 
-    fun saveSong(songDto: SongDto) = SongConverter.toDto(songsRepository.save(SongConverter.toData(songDto)))
+    fun saveSong(songDto: SongDto) = songsRepository.save(songDto.toData()).toDto()
 
-    fun updateSong(songDto: SongDto) = SongConverter.toDto(songsRepository.save(SongConverter.toData(songDto)))
+    fun updateSong(songDto: SongDto) = songsRepository.save(songDto.toData()).toDto()
 
     fun deleteById(id: Long) = songsRepository.deleteById(id)
 }

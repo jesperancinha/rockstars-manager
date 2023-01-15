@@ -1,7 +1,10 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.controller
 
+import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNot
+import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions
 import org.jesperancinha.rockstarts.rockstarsmanager.containers.AbstractTestContainersIT.DockerPostgresDataInitializer
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
@@ -57,7 +60,7 @@ class ArtistsControllerIT @Autowired constructor(
 
     @Test
     fun givenArtist_whenSave_thenSaveArtist() {
-        val artistDto: ArtistDto = ArtistDto(
+        val artistDto = ArtistDto(
             id = 10102L,
             name = ARIANA_GRANDE)
         val savedToDataBase = controller.saveArtist(artistDto)
@@ -68,53 +71,48 @@ class ArtistsControllerIT @Autowired constructor(
 
     @Test
     fun given2Artists_whenSave_thenSave2Artists() {
-        val artistDtoAriana: ArtistDto = ArtistDto.builder()
-            .id(10102L)
-            .name(ARIANA_GRANDE)
-            .build()
-        val artistDtoMabel: ArtistDto = ArtistDto.builder()
-            .id(10101L)
-            .name(MABEL)
-            .build()
+        val artistDtoAriana = ArtistDto(
+            id =10102L,
+            name = ARIANA_GRANDE)
+        val artistDtoMabel = ArtistDto(
+            id =10101L,
+            name =MABEL)
         val savedAriana = controller.saveArtist(artistDtoAriana)
         val savedMabel = controller.saveArtist(artistDtoMabel)
-        assertThat(savedAriana.getName()).isEqualTo(artistDtoAriana.getName())
-        assertThat(savedMabel.getName()).isEqualTo(artistDtoMabel.getName())
-        assertThat(savedAriana.getId()).isNotEqualTo(savedMabel.getId())
+        savedAriana.name shouldBe artistDtoAriana.name
+        savedMabel.name shouldBe artistDtoMabel.name
+        savedAriana.name shouldNotBe savedMabel.name
     }
 
     @Test
     fun givenArtistOnDb_whenUpdate_thenUpdate() {
-        val artistDto: ArtistDto = ArtistDto.builder()
-            .name(ARIANA_GRANDE)
-            .build()
+        val artistDto = ArtistDto(
+             name = ARIANA_GRANDE)
         val savedToDataBase = controller.saveArtist(artistDto)
-        val artistDtoUpdate: ArtistDto = ArtistDto.builder()
-            .id(savedToDataBase.getId())
-            .name(MABEL)
-            .build()
-        val artistDtoUpdateResult = controller.putArtist(artistDtoUpdate, artistDtoUpdate.getId())
-        Assertions.assertThat(savedToDataBase).isNotNull
-        assertThat(savedToDataBase.getName()).isEqualTo(artistDto.getName())
-        Assertions.assertThat(artistDtoUpdate).isNotNull
-        Assertions.assertThat(artistDtoUpdateResult).isNotNull
-        assertThat(artistDtoUpdateResult.getName()).isEqualTo(artistDtoUpdate.getName())
-        assertThat(artistDtoUpdateResult.getId()).isEqualTo(savedToDataBase.getId())
+        val artistDtoUpdate = ArtistDto(
+             id = savedToDataBase.id,
+             name = MABEL)
+        val artistDtoUpdateResult = controller.putArtist(artistDtoUpdate, artistDtoUpdate.id)
+        savedToDataBase.shouldNotBeNull()
+        savedToDataBase.name shouldBe artistDto.name
+        artistDtoUpdate.shouldNotBeNull()
+        artistDtoUpdateResult.shouldNotBeNull()
+        artistDtoUpdateResult.name shouldBe artistDtoUpdate.name
+        artistDtoUpdateResult.id shouldBe savedToDataBase.id
     }
 
     @Test
     fun givenArtistOnDb_whenDelete_thenCallsDelete() {
-        val artistDto: ArtistDto = ArtistDto.builder()
-            .id(10102L)
-            .name(ARIANA_GRANDE)
-            .build()
+        val artistDto = ArtistDto(
+            id = 10102L,
+            name= ARIANA_GRANDE)
         val savedToDataBase = controller.saveArtist(artistDto)
-        controller.deleteById(savedToDataBase.getId())
-        val artistsById = controller.getArtistsById(savedToDataBase.getId())
-        assertThat(savedToDataBase.getName()).isEqualTo(artistDto.getName())
-        Assertions.assertThat(artistsById).isNotNull
-        Assertions.assertThat(artistsById.body).isNull()
-        Assertions.assertThat(artistsById.statusCode).isEqualTo(NOT_FOUND)
+        savedToDataBase.id?.let { controller.deleteById(it) }
+        val artistsById = savedToDataBase.id?.let { controller.getArtistsById(it) }
+        savedToDataBase.name shouldBe artistDto.name
+        artistsById.shouldNotBeNull()
+        artistsById.body.shouldBeNull()
+        artistsById.statusCode shouldBe NOT_FOUND
     }
 
     companion object {

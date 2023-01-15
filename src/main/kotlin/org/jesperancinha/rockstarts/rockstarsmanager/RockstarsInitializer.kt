@@ -3,8 +3,7 @@ package org.jesperancinha.rockstarts.rockstarsmanager
 import com.fasterxml.jackson.databind.ObjectMapper
 import lombok.extern.slf4j.Slf4j
 import org.apache.commons.io.IOUtils
-import org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter
-import org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter
+import org.jesperancinha.rockstarts.rockstarsmanager.converters.toData
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
 import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository
@@ -34,14 +33,14 @@ class RockstarsInitializer(
             .flatMap { response: ResponseEntity<Array<ArtistDto>> -> Optional.ofNullable(response.body) }
             .ifPresent { artists: Array<ArtistDto>? ->
                 Arrays.stream(artists)
-                    .forEach { artistDto: ArtistDto -> artistsRepository.save(ArtistsConverter.toData(artistDto)) }
+                    .forEach { artistDto: ArtistDto -> artistsRepository.save(artistDto.toData()) }
             }
         Optional.of(allSongs)
             .flatMap { response: ResponseEntity<Array<SongDto>> -> Optional.ofNullable(response.body) }
             .ifPresent { songs: Array<SongDto>? ->
                 Arrays.stream(songs)
                     .filter(SONG_DTO_PREDICATE)
-                    .forEach { songDto: SongDto -> songsRepository.save(SongConverter.toData(songDto)) }
+                    .forEach { songDto: SongDto -> songsRepository.save(songDto.toData()) }
             }
     }
 

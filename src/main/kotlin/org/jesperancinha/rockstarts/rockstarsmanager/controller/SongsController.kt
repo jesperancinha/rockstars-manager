@@ -21,7 +21,7 @@ class SongsController(
 
     @GetMapping("/filter/name/{songName}")
     fun getSongByName(
-        @PathVariable songName: String?,
+        @PathVariable songName: String,
     ): SongDto? {
         return songsService.getSongByName(songName)
     }
