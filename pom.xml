@@ -27,6 +27,7 @@
 
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.2</omni-coveragereporter-maven-plugin.version>
+        <kotest-assertions-core-jvm.version>5.5.4</kotest-assertions-core-jvm.version>
     </properties>
 
     <dependencies>
@@ -118,6 +119,12 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-assertions-core-jvm</artifactId>
+            <version>${kotest-assertions-core-jvm.version}</version>
         </dependency>
     </dependencies>
 

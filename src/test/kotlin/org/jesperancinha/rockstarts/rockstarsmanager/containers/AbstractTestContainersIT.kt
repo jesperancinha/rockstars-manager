@@ -9,7 +9,7 @@ object AbstractTestContainersIT {
     var postgreSQLContainer: PostgreSQLContainer<*>? = null
 
     init {
-        postgreSQLContainer = PostgreSQLContainer<SELF>("postgres:14")
+        postgreSQLContainer = PostgreSQLContainer("postgres:14")
             .withUsername("postgres")
             .withPassword("password")
             .withInitScript("schema.sql")

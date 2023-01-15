@@ -22,8 +22,8 @@ class ArtistsController(private val artistsService: ArtistsService) {
 
     @GetMapping("/filter/name/{artistName}")
     fun getArtistByName(
-        @PathVariable artistName: String?,
-    ): ResponseEntity<ArtistDto?> {
+        @PathVariable artistName: String,
+    ): ResponseEntity<ArtistDto> {
         val artistsByName = artistsService.getArtistsByName(artistName)
         return if (Objects.isNull(artistsByName)) {
             ResponseEntity.notFound()

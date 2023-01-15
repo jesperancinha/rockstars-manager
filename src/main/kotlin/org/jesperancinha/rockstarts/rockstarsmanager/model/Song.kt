@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "songs")
-class Song {
+class Song(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private val id: Long? = null
-    private val name: String? = null
-    private val year: Int? = null
-    private val artist: String? = null
-    private val shortName: String? = null
-    private val bpm: Long? = null
-    private val duration: Long? = null
-    private val genre: String? = null
-    private val spotifyId: String? = null
-    private val album: String? = null
-}
+    val id: Long? = null,
+    val name: String? = null,
+    val year: Int? = null,
+    val artist: String? = null,
+    val shortName: String? = null,
+    val bpm: Long? = null,
+    val duration: Long? = null,
+    val genre: String? = null,
+    val spotifyId: String? = null,
+    val album: String? = null
+)
