@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
 import org.jesperancinha.rockstarts.rockstarsmanager.model.Artist;
 import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository;
-import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsService;
 import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsServiceImpl;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class ArtistServiceStepdefs {
 
     private final ArtistsRepository artistsRepository = mock(ArtistsRepository.class);
 
-    private final ArtistsService artistsService = new ArtistsServiceImpl(artistsRepository);
+    private final ArtistsServiceImpl artistsService = new ArtistsServiceImpl(artistsRepository);
 
     private List<ArtistDto> artistDtos;
 

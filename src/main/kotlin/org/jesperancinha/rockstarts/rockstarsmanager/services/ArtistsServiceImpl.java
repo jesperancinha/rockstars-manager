@@ -11,7 +11,7 @@ import static org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsCo
 import static org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter.toDto;
 
 @Service
-public class ArtistsServiceImpl implements ArtistsService {
+public class ArtistsServiceImpl {
 
     private final ArtistsRepository artistsRepository;
 
@@ -19,7 +19,6 @@ public class ArtistsServiceImpl implements ArtistsService {
         this.artistsRepository = artistsRepository;
     }
 
-    @Override
     public ArtistDto getArtistsById(Long id) {
         Optional<Artist> byId = artistsRepository.findById(id);
         if (byId.isEmpty()) {
@@ -28,22 +27,18 @@ public class ArtistsServiceImpl implements ArtistsService {
         return toDto(byId.get());
     }
 
-    @Override
     public void deleteById(Long id) {
         artistsRepository.deleteById(id);
     }
 
-    @Override
     public ArtistDto getArtistsByName(String artistName) {
         return toDto(artistsRepository.findArtistsByName(artistName));
     }
 
-    @Override
     public ArtistDto updateArtist(ArtistDto artistDto) {
         return toDto(artistsRepository.save(toData(artistDto)));
     }
 
-    @Override
     public ArtistDto saveArtist(ArtistDto artistDto) {
         return toDto(artistsRepository.save(toData(artistDto)));
     }

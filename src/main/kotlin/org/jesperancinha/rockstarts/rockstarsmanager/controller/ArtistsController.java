@@ -1,7 +1,7 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.controller;
 
 import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsService;
+import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +18,9 @@ import java.util.Objects;
 @RequestMapping("/artists")
 public class ArtistsController {
 
-    private final ArtistsService artistsService;
+    private final ArtistsServiceImpl artistsService;
 
-    public ArtistsController(ArtistsService artistsService) {
+    public ArtistsController(ArtistsServiceImpl artistsService) {
         this.artistsService = artistsService;
     }
 

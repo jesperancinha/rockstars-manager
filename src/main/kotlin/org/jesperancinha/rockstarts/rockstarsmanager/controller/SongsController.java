@@ -1,7 +1,7 @@
 package org.jesperancinha.rockstarts.rockstarsmanager.controller;
 
 import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.services.SongsService;
+import org.jesperancinha.rockstarts.rockstarsmanager.services.SongsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class SongsController {
 
     @Autowired
-    private SongsService songsService;
+    private SongsServiceImpl songsService;
 
     @GetMapping("{id}")
     public SongDto getSongById(
