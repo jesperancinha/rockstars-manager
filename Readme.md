@@ -1,5 +1,25 @@
 # Rockstars Manager
 
+---
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/rockstars-manager)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=rockstars-manager%20🤘&color=informational)](https://github.com/jesperancinha/rockstars-manager)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
+[![rockstars-manager](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstars-manager.yml/badge.svg)](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstars-manager.yml)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c087adeb61914ad9ab259e0abbcb6c27)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/rockstars-manager&amp;utm_campaign=Badge_Grade)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c087adeb61914ad9ab259e0abbcb6c27)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/rockstars-manager&utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/rockstars-manager/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/rockstars-manager?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/rockstars-manager/branch/master/graph/badge.svg?token=2V6LD1PmAW)](https://codecov.io/gh/jesperancinha/rockstars-manager)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/rockstars-manager.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/rockstars-manager.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/rockstars-manager.svg)](#)
+
+---
+
 ---- Under Construction ----
 
 This application is a Rockstars manager

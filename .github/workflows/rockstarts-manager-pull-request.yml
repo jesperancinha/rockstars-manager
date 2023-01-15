@@ -1,4 +1,4 @@
-name: Build on PR
+name: RSM Build on PR
 
 on:
   pull_request:
