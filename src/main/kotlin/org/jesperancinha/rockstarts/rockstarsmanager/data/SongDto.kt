@@ -1,48 +1,45 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.data;
+package org.jesperancinha.rockstarts.rockstarsmanager.data
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty
+import jakarta.persistence.Id
+import lombok.AllArgsConstructor
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SongDto {
-
+class SongDto {
     @Id
     @JsonProperty("Id")
-    private Long id;
+    private val id: Long? = null
 
     @JsonProperty("Name")
-    private String name;
+    private val name: String? = null
 
     @JsonProperty("Year")
-    private Integer year;
+    private val year: Int? = null
 
     @JsonProperty("Artist")
-    private String artist;
+    private val artist: String? = null
 
     @JsonProperty("Shortname")
-    private String shortName;
+    private val shortName: String? = null
 
     @JsonProperty("Bpm")
-    private Long bpm;
+    private val bpm: Long? = null
 
     @JsonProperty("Duration")
-    private Long duration;
+    private val duration: Long? = null
 
     @JsonProperty("Genre")
-    private String genre;
+    private val genre: String? = null
 
     @JsonProperty("SpotifyId")
-    private String spotifyId;
+    private val spotifyId: String? = null
 
     @JsonProperty("Album")
-    private String album;
+    private val album: String? = null
 }

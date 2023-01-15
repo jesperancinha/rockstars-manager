@@ -1,18 +1,15 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.configuration;
+package org.jesperancinha.rockstarts.rockstarsmanager.configuration
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.lang.Nullable;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.sql.Timestamp;
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.Table
+import lombok.AllArgsConstructor
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
+import org.springframework.lang.Nullable
+import java.sql.Timestamp
 
 @Entity
 @Data
@@ -20,23 +17,21 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-public class User {
-
+class User {
     @Id
     @Column(unique = true)
-    private String email;
+    private val email: String? = null
 
     @Column
-    private String name;
+    private val name: String? = null
 
     @Column
-    private String password;
+    private val password: String? = null
 
     @Column
-    private String role;
+    private val role: String? = null
 
     @Column
     @Nullable
-    private Timestamp date;
-
+    private val date: Timestamp? = null
 }

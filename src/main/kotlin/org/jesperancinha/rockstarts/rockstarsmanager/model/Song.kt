@@ -1,15 +1,10 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.model;
+package org.jesperancinha.rockstarts.rockstarsmanager.model
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*
+import lombok.AllArgsConstructor
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
 
 @Entity
 @Data
@@ -17,27 +12,17 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "songs")
-public class Song {
-
+class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private String name;
-
-    private Integer year;
-
-    private String artist;
-
-    private String shortName;
-
-    private Long bpm;
-
-    private Long duration;
-
-    private String genre;
-
-    private String spotifyId;
-
-    private String album;
+    private val id: Long? = null
+    private val name: String? = null
+    private val year: Int? = null
+    private val artist: String? = null
+    private val shortName: String? = null
+    private val bpm: Long? = null
+    private val duration: Long? = null
+    private val genre: String? = null
+    private val spotifyId: String? = null
+    private val album: String? = null
 }

@@ -1,87 +1,100 @@
-package org.jesperancinha.rockstarts.rockstarsmanager;
+package org.jesperancinha.rockstarts.rockstarsmanager
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
-import org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter;
-import org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter;
-import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository;
-import org.jesperancinha.rockstarts.rockstarsmanager.repository.SongsRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.fasterxml.jackson.databind.ObjectMapper
+import lombok.extern.slf4j.Slf4j
+import org.apache.commons.io.IOUtils
+import org.jesperancinha.rockstarts.rockstarsmanager.converters.ArtistsConverter
+import org.jesperancinha.rockstarts.rockstarsmanager.converters.SongConverter
+import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
+import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto
+import org.jesperancinha.rockstarts.rockstarsmanager.repository.ArtistsRepository
+import org.jesperancinha.rockstarts.rockstarsmanager.repository.SongsRepository
+import org.springframework.boot.CommandLineRunner
+import org.springframework.context.annotation.Profile
+import org.springframework.http.*
+import org.springframework.stereotype.Component
+import org.springframework.web.client.RestTemplate
+import java.io.IOException
+import java.util.*
+import java.util.function.Predicate
 
 @Component
 @Slf4j
-@Profile({ "local", "prod" })
-public class RockstarsInitializer implements CommandLineRunner {
-
-    public static final Predicate<SongDto> SONG_DTO_PREDICATE = songDto -> songDto.getGenre()
-        .equalsIgnoreCase("Metal");
-    public static final String HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON = "https://www.teamrockstars.nl/sites/default/files/artists.json";
-    public static final String HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON = "https://www.teamrockstars.nl/sites/default/files/songs.json";
-
-    private final SongsRepository songsRepository;
-    private final ArtistsRepository artistsRepository;
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    public RockstarsInitializer(SongsRepository songsRepository, ArtistsRepository artistsRepository) {
-        this.songsRepository = songsRepository;
-        this.artistsRepository = artistsRepository;
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-
-        final ResponseEntity<ArtistDto[]> allArtists = getAllArtists();
-        final ResponseEntity<SongDto[]> allSongs = getAllSongs();
-
+@Profile("local", "prod")
+class RockstarsInitializer(
+    private val songsRepository: SongsRepository,
+    private val artistsRepository: ArtistsRepository
+) : CommandLineRunner {
+    private val objectMapper = ObjectMapper()
+    @Throws(Exception::class)
+    override fun run(vararg args: String) {
+        val allArtists = allArtists
+        val allSongs = allSongs
         Optional.of(allArtists)
-            .flatMap(response -> Optional.ofNullable(response.getBody()))
-            .ifPresent(artists -> Arrays.stream(artists)
-                .forEach(artistDto -> artistsRepository.save(ArtistsConverter.toData(artistDto))));
+            .flatMap { response: ResponseEntity<Array<ArtistDto>> -> Optional.ofNullable(response.body) }
+            .ifPresent { artists: Array<ArtistDto>? ->
+                Arrays.stream(artists)
+                    .forEach { artistDto: ArtistDto -> artistsRepository.save(ArtistsConverter.toData(artistDto)) }
+            }
         Optional.of(allSongs)
-            .flatMap(response -> Optional.ofNullable(response.getBody()))
-            .ifPresent(songs -> Arrays.stream(songs)
-                .filter(SONG_DTO_PREDICATE)
-                .forEach(songDto -> songsRepository.save(SongConverter.toData(songDto))));
+            .flatMap { response: ResponseEntity<Array<SongDto>> -> Optional.ofNullable(response.body) }
+            .ifPresent { songs: Array<SongDto>? ->
+                Arrays.stream(songs)
+                    .filter(SONG_DTO_PREDICATE)
+                    .forEach { songDto: SongDto -> songsRepository.save(SongConverter.toData(songDto)) }
+            }
     }
 
-    private ResponseEntity<ArtistDto[]> getAllArtists() throws IOException {
-        try {
-            return fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON, ArtistDto[].class);
-        } catch (Exception e) {
-            return ResponseEntity.of(Optional.of(objectMapper.readValue(IOUtils.toString(getClass().getResourceAsStream("/artists.json")), ArtistDto[].class)));
+    @get:Throws(IOException::class)
+    private val allArtists: ResponseEntity<Array<ArtistDto>>
+        private get() = try {
+            fetchResponseEntity(
+                HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON,
+                Array<ArtistDto>::class.java
+            )
+        } catch (e: Exception) {
+            ResponseEntity.of(
+                Optional.of(
+                    objectMapper.readValue(
+                        IOUtils.toString(javaClass.getResourceAsStream("/artists.json")),
+                        Array<ArtistDto>::class.java
+                    )
+                )
+            )
         }
-    }
 
-    private ResponseEntity<SongDto[]> getAllSongs() throws IOException {
-        try {
-            return fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON, SongDto[].class);
-        } catch (Exception e) {
-            return ResponseEntity.of(Optional.of(objectMapper.readValue(IOUtils.toString(getClass().getResourceAsStream("/songs.json.json")), SongDto[].class)));
+    @get:Throws(IOException::class)
+    private val allSongs: ResponseEntity<Array<SongDto>>
+        private get() = try {
+            fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON, Array<SongDto>::class.java)
+        } catch (e: Exception) {
+            ResponseEntity.of(
+                Optional.of(
+                    objectMapper.readValue(
+                        IOUtils.toString(javaClass.getResourceAsStream("/songs.json.json")),
+                        Array<SongDto>::class.java
+                    )
+                )
+            )
         }
+
+    private fun <T> fetchResponseEntity(artistsUri: String, responseType: Class<T>): ResponseEntity<T> {
+        val restTemplate = RestTemplate()
+        val headers = HttpHeaders()
+        headers.accept =
+            listOf(MediaType.APPLICATION_JSON)
+        val entity = HttpEntity("parameters", headers)
+        return restTemplate.exchange(artistsUri, HttpMethod.GET, entity, responseType)
     }
 
-    private <T> ResponseEntity<T> fetchResponseEntity(String artistsUri, Class<T> responseType) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
-        return restTemplate.exchange(artistsUri, HttpMethod.GET, entity, responseType);
+    companion object {
+        val SONG_DTO_PREDICATE = Predicate { songDto: SongDto ->
+            songDto.genre
+                .equals("Metal", ignoreCase = true)
+        }
+        const val HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON =
+            "https://www.teamrockstars.nl/sites/default/files/artists.json"
+        const val HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON =
+            "https://www.teamrockstars.nl/sites/default/files/songs.json"
     }
 }

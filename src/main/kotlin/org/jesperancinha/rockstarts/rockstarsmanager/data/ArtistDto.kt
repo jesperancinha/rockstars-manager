@@ -1,9 +1,8 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.data;
+package org.jesperancinha.rockstarts.rockstarsmanager.data
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty
+import jakarta.persistence.Id
+import lombok.*
 
 @Data
 @Builder
@@ -11,12 +10,11 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ArtistDto {
-
+class ArtistDto {
     @Id
     @JsonProperty("Id")
-    private Long id;
+    private val id: Long? = null
 
     @JsonProperty("Name")
-    private String name;
+    private val name: String? = null
 }

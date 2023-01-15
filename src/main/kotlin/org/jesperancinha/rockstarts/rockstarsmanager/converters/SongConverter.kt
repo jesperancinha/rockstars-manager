@@ -1,10 +1,10 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.converters;
+package org.jesperancinha.rockstarts.rockstarsmanager.converters
 
-import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.model.Song;
+import org.jesperancinha.rockstarts.rockstarsmanager.data.SongDto
+import org.jesperancinha.rockstarts.rockstarsmanager.model.Song
 
-public class SongConverter {
-    public static SongDto toDto(Song song) {
+object SongConverter {
+    fun toDto(song: Song?): SongDto {
         return SongDto.builder()
             .id(song.getId())
             .name(song.getName())
@@ -16,21 +16,21 @@ public class SongConverter {
             .genre(song.getGenre())
             .spotifyId(song.getSpotifyId())
             .album(song.getAlbum())
-            .build();
+            .build()
     }
 
-    public static Song toData(SongDto songDto) {
+    fun toData(songDto: SongDto): Song {
         return Song.builder()
-            .id(songDto.getId())
-            .name(songDto.getName())
-            .year(songDto.getYear())
-            .artist(songDto.getArtist())
-            .shortName(songDto.getShortName())
-            .bpm(songDto.getBpm())
-            .duration(songDto.getDuration())
-            .genre(songDto.getGenre())
-            .spotifyId(songDto.getSpotifyId())
-            .album(songDto.getAlbum())
-            .build();
+            .id(songDto.id)
+            .name(songDto.name)
+            .year(songDto.year)
+            .artist(songDto.artist)
+            .shortName(songDto.shortName)
+            .bpm(songDto.bpm)
+            .duration(songDto.duration)
+            .genre(songDto.genre)
+            .spotifyId(songDto.spotifyId)
+            .album(songDto.album)
+            .build()
     }
 }

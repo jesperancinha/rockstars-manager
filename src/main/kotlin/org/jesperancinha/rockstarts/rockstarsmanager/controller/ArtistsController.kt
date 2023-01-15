@@ -1,75 +1,56 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.controller;
+package org.jesperancinha.rockstarts.rockstarsmanager.controller
 
-import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto;
-import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsServiceImpl;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Objects;
+import org.jesperancinha.rockstarts.rockstarsmanager.data.ArtistDto
+import org.jesperancinha.rockstarts.rockstarsmanager.services.ArtistsService
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/artists")
-public class ArtistsController {
-
-    private final ArtistsServiceImpl artistsService;
-
-    public ArtistsController(ArtistsServiceImpl artistsService) {
-        this.artistsService = artistsService;
-    }
-
+class ArtistsController(private val artistsService: ArtistsService) {
     @GetMapping("{id}")
-    public ResponseEntity<ArtistDto> getArtistsById(
-        @PathVariable
-            Long id) {
-        final ArtistDto artistsById = artistsService.getArtistsById(id);
-        if (Objects.isNull(artistsById)) {
-            return ResponseEntity.notFound()
-                .build();
-        }
-        return ResponseEntity.ok(artistsById);
+    fun getArtistsById(
+        @PathVariable id: Long
+    ): ResponseEntity<ArtistDto?> {
+        val artistsById = artistsService.getArtistsById(id)
+        return if (Objects.isNull(artistsById)) {
+            ResponseEntity.notFound()
+                .build()
+        } else ResponseEntity.ok(artistsById)
     }
 
     @GetMapping("/filter/name/{artistName}")
-    public ResponseEntity<ArtistDto> getArtistByName(
-        @PathVariable
-            String artistName) {
-        final ArtistDto artistsByName = artistsService.getArtistsByName(artistName);
-        if (Objects.isNull(artistsByName)) {
-            return ResponseEntity.notFound()
-                .build();
-        }
-        return ResponseEntity.ok(artistsByName);
+    fun getArtistByName(
+        @PathVariable artistName: String?
+    ): ResponseEntity<ArtistDto?> {
+        val artistsByName = artistsService.getArtistsByName(artistName)
+        return if (Objects.isNull(artistsByName)) {
+            ResponseEntity.notFound()
+                .build()
+        } else ResponseEntity.ok(artistsByName)
     }
 
     @PostMapping
-    public ArtistDto saveArtist(
-        @RequestBody
-            ArtistDto artistDto) {
-        return artistsService.saveArtist(artistDto);
+    fun saveArtist(
+        @RequestBody artistDto: ArtistDto
+    ): ArtistDto? {
+        return artistsService.saveArtist(artistDto)
     }
 
     @PutMapping("{id}")
-    public ArtistDto putArtist(
-        @RequestBody
-            ArtistDto artistDto,
-        @PathVariable
-            Long id) {
-        artistDto.setId(id);
-        return artistsService.updateArtist(artistDto);
+    fun putArtist(
+        @RequestBody artistDto: ArtistDto,
+        @PathVariable id: Long?
+    ): ArtistDto? {
+        artistDto.id = id
+        return artistsService.updateArtist(artistDto)
     }
 
     @DeleteMapping("{id}")
-    public void deleteById(
-        @PathVariable
-            Long id) {
-        artistsService.deleteById(id);
+    fun deleteById(
+        @PathVariable id: Long
+    ) {
+        artistsService.deleteById(id)
     }
-
 }

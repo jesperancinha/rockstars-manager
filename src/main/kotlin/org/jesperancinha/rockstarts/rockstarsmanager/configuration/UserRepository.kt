@@ -1,6 +1,5 @@
-package org.jesperancinha.rockstarts.rockstarsmanager.configuration;
+package org.jesperancinha.rockstarts.rockstarsmanager.configuration
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository
 
-public interface UserRepository extends CrudRepository<User, String> {
-}
+interface UserRepository : CrudRepository<User?, String?>
