@@ -6,9 +6,9 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=rockstars-manager%20🤘&color=informational)](https://github.com/jesperancinha/rockstars-manager)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
-[![rockstars-manager](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstars-manager.yml/badge.svg)](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstars-manager.yml)
+[![RSM Build on PR](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-pull-request.yml/badge.svg)](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-pull-request.yml)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c087adeb61914ad9ab259e0abbcb6c27)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/rockstars-manager&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3bcf372c7e6e42d6827a1393d0517d90)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/rockstars-manager&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c087adeb61914ad9ab259e0abbcb6c27)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/rockstars-manager&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/rockstars-manager/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/rockstars-manager?branch=master)
