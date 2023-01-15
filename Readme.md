@@ -6,6 +6,7 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=rockstars-manager%20🤘&color=informational)](https://github.com/jesperancinha/rockstars-manager)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![RSM Build, Test, Coverage and Report](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-races.yml/badge.svg)](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-races.yml)
 [![RSM Build on PR](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-pull-request.yml/badge.svg)](https://github.com/jesperancinha/rockstars-manager/actions/workflows/rockstarts-manager-pull-request.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/3bcf372c7e6e42d6827a1393d0517d90)](https://www.codacy.com/gh/jesperancinha/rockstars-manager/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/rockstars-manager&amp;utm_campaign=Badge_Grade)
