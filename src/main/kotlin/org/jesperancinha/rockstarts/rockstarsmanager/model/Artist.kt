@@ -6,6 +6,8 @@ import lombok.Builder
 import lombok.Data
 import lombok.NoArgsConstructor
 
+@Table
+@Entity
 data class Artist(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

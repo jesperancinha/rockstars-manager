@@ -44,7 +44,7 @@ class ArtistServiceStepdefs {
     fun we_get_artist_with_names(expectedArtistNames: List<String>) {
         Assertions.assertThat(expectedArtistNames).hasSameElementsAs(expectedArtistNames)
         for (i in artistDtos.indices) {
-            artistDtos[i] shouldBe expectedArtistNames[i]
+            artistDtos[i].name shouldBe expectedArtistNames[i]
         }
     }
 }

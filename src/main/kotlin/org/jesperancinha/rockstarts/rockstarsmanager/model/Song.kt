@@ -7,10 +7,6 @@ import lombok.Data
 import lombok.NoArgsConstructor
 
 @Entity
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "songs")
 class Song(
     @Id

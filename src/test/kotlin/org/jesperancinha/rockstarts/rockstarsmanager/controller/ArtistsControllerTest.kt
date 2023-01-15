@@ -31,6 +31,7 @@ class ArtistsControllerTest {
     @Autowired
     private val mockMvc: MockMvc? = null
     private val objectMapper = ObjectMapper()
+
     @Test
     @Throws(Exception::class)
     fun givenArtistOnDb_whenGettingArtist_thenReturnArtistNoError() {
@@ -42,10 +43,10 @@ class ArtistsControllerTest {
     @Test
     @Throws(Exception::class)
     fun givenArtistOnDb_whenGetByName_thenGetArtistByName() {
-        val artistDto: ArtistDto = ArtistDto.builder()
-            .id(10101L)
-            .name(DUA_LIPA)
-            .build()
+        val artistDto = ArtistDto(
+            id = 10101L,
+            name = DUA_LIPA
+        )
         Mockito.`when`(artistsService!!.getArtistsByName(DUA_LIPA)).thenReturn(artistDto)
         mockMvc!!.perform(MockMvcRequestBuilders.get("/artists/filter/name/DuaLipa"))
             .andDo(MockMvcResultHandlers.print())
@@ -55,10 +56,10 @@ class ArtistsControllerTest {
     @Test
     @Throws(Exception::class)
     fun givenArtist_whenSave_thenCallSave() {
-        val artistDto: ArtistDto = ArtistDto.builder()
-            .id(10101L)
-            .name(ARIANA_GRANDE)
-            .build()
+        val artistDto = ArtistDto(
+            id = 10101L,
+            name = ARIANA_GRANDE
+        )
         Mockito.`when`(artistsService!!.saveArtist(ArgumentMatchers.any())).thenReturn(artistDto)
         mockMvc!!.perform(
             MockMvcRequestBuilders.post("/artists").contentType(MediaType.APPLICATION_JSON)
@@ -71,10 +72,10 @@ class ArtistsControllerTest {
     @Test
     @Throws(Exception::class)
     fun givenArtistOnDb_whenUpdate_thenCallsUpdate() {
-        val artistDto: ArtistDto = ArtistDto.builder()
-            .id(10101L)
-            .name(MABEL)
-            .build()
+        val artistDto = ArtistDto(
+            id = 10101L,
+            name = MABEL
+        )
         Mockito.`when`(artistsService!!.updateArtist(ArgumentMatchers.any())).thenReturn(artistDto)
         mockMvc!!.perform(
             MockMvcRequestBuilders.put("/artists/10101").contentType(MediaType.APPLICATION_JSON)
