@@ -7,39 +7,34 @@ import lombok.Builder
 import lombok.Data
 import lombok.NoArgsConstructor
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class SongDto {
-    @Id
+data class SongDto(
     @JsonProperty("Id")
-    private val id: Long? = null
+    val id: Long? = null,
 
     @JsonProperty("Name")
-    private val name: String? = null
+    val name: String? = null,
 
     @JsonProperty("Year")
-    private val year: Int? = null
+    val year: Int? = null,
 
     @JsonProperty("Artist")
-    private val artist: String? = null
+    val artist: String? = null,
 
     @JsonProperty("Shortname")
-    private val shortName: String? = null
+    val shortName: String? = null,
 
     @JsonProperty("Bpm")
-    private val bpm: Long? = null
+    val bpm: Long? = null,
 
     @JsonProperty("Duration")
-    private val duration: Long? = null
+    val duration: Long? = null,
 
     @JsonProperty("Genre")
-    private val genre: String? = null
+    val genre: String? = null,
 
     @JsonProperty("SpotifyId")
-    private val spotifyId: String? = null
+    val spotifyId: String? = null,
 
     @JsonProperty("Album")
-    private val album: String? = null
-}
+    val album: String? = null,
+)

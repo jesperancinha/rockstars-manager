@@ -7,43 +7,45 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/songs")
-class SongsController {
+class SongsController(
     @Autowired
-    private val songsService: SongsService? = null
+    private val songsService: SongsService,
+) {
+
     @GetMapping("{id}")
     fun getSongById(
-        @PathVariable id: Long
+        @PathVariable id: Long,
     ): SongDto? {
-        return songsService!!.getSongById(id)
+        return songsService.getSongById(id)
     }
 
     @GetMapping("/filter/name/{songName}")
     fun getSongByName(
-        @PathVariable songName: String?
+        @PathVariable songName: String?,
     ): SongDto? {
-        return songsService!!.getSongByName(songName)
+        return songsService.getSongByName(songName)
     }
 
     @PostMapping
     fun saveSong(
-        @RequestBody songDto: SongDto
+        @RequestBody songDto: SongDto,
     ): SongDto? {
-        return songsService!!.saveSong(songDto)
+        return songsService.saveSong(songDto)
     }
 
     @PutMapping("/{id}")
     fun putArtist(
         @RequestBody songDto: SongDto,
-        @PathVariable id: Long?
+        @PathVariable id: Long?,
     ): SongDto? {
-        songDto.id = id
-        return songsService!!.updateSong(songDto)
+
+        return songsService.updateSong(songDto.copy(id = id))
     }
 
     @DeleteMapping("{id}")
     fun deleteById(
-        @PathVariable id: Long
+        @PathVariable id: Long,
     ) {
-        songsService!!.deleteById(id)
+        songsService.deleteById(id)
     }
 }

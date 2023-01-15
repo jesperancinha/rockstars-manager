@@ -11,7 +11,7 @@ import java.util.*
 class ArtistsController(private val artistsService: ArtistsService) {
     @GetMapping("{id}")
     fun getArtistsById(
-        @PathVariable id: Long
+        @PathVariable id: Long,
     ): ResponseEntity<ArtistDto?> {
         val artistsById = artistsService.getArtistsById(id)
         return if (Objects.isNull(artistsById)) {
@@ -22,7 +22,7 @@ class ArtistsController(private val artistsService: ArtistsService) {
 
     @GetMapping("/filter/name/{artistName}")
     fun getArtistByName(
-        @PathVariable artistName: String?
+        @PathVariable artistName: String?,
     ): ResponseEntity<ArtistDto?> {
         val artistsByName = artistsService.getArtistsByName(artistName)
         return if (Objects.isNull(artistsByName)) {
@@ -33,23 +33,18 @@ class ArtistsController(private val artistsService: ArtistsService) {
 
     @PostMapping
     fun saveArtist(
-        @RequestBody artistDto: ArtistDto
-    ): ArtistDto? {
-        return artistsService.saveArtist(artistDto)
-    }
+        @RequestBody artistDto: ArtistDto,
+    ) = artistsService.saveArtist(artistDto)
 
     @PutMapping("{id}")
     fun putArtist(
         @RequestBody artistDto: ArtistDto,
-        @PathVariable id: Long?
-    ): ArtistDto? {
-        artistDto.id = id
-        return artistsService.updateArtist(artistDto)
-    }
+        @PathVariable id: Long?,
+    ) = artistsService.updateArtist(artistDto.copy(id = id))
 
     @DeleteMapping("{id}")
     fun deleteById(
-        @PathVariable id: Long
+        @PathVariable id: Long,
     ) {
         artistsService.deleteById(id)
     }
