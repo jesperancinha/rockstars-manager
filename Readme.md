@@ -20,10 +20,17 @@
 
 ---
 
+## Introduction
+
 ---- Under Construction ----
 
 This application is a Rockstars manager
 
+#### Stable releases
+
+-   [0.0.1](https://github.com/jesperancinha/rockstars-manager/tree/0.0.1) - [4ecb6333713e31c30e195a2c9b5ea033d785f198](https://github.com/jesperancinha/rockstars-manager/tree/0.0.1) - ?
+-   [0.0.2](https://github.com/jesperancinha/rockstars-manager/tree/0.0.2) - [73e941a8634e69abaf73a001af970e060192fd03](https://github.com/jesperancinha/rockstars-manager/tree/0.0.2) - JDK 17 / Mockito / Java / JUnit assertion
+-   [1.0.0](https://github.com/jesperancinha/rockstars-manager/tree/1.0.0) - [27b82491eecc13b6044ecb6207aeaae23386d3bd](https://github.com/jesperancinha/rockstars-manager/tree/1.0.0) - JDK 19 / Kotlin 1.8.0 / Kotest / Spring Mockk / Spring Boot 3.0.1
 
 ## RESTfull requests
 
