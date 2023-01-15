@@ -84,14 +84,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type
 curl -H "Authorization: Bearer TOKEN" http://localhost:8080/rockstars/artists/200
 ```
 
-## Docker images
-
-This project makes use of the following docker images:
-
-[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-runtime-jdk-11)](https://hub.docker.com/r/jesperancinha/je-all-runtime-jdk-11)
-
-[![dockeri.co](https://dockeri.co/image/_/postgres)](https://hub.docker.com/_/postgres)
-
 ## Running everything
 
 Please have docker desktop running. Finally run:
