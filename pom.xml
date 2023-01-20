@@ -17,7 +17,7 @@
         <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
         <kotlin.version>1.8.0</kotlin.version>
 
-        <spring-boot-starter-parent.version>3.0.1</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.0.2</spring-boot-starter-parent.version>
         <lombok.version>1.18.24</lombok.version>
 
         <commons-io.version>2.11.0</commons-io.version>
