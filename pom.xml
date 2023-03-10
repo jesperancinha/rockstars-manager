@@ -28,7 +28,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
         <kotest-assertions-core-jvm.version>5.5.5</kotest-assertions-core-jvm.version>
-        <springmockk.version>4.0.1</springmockk.version>
+        <springmockk.version>4.0.2</springmockk.version>
     </properties>
 
     <dependencies>
