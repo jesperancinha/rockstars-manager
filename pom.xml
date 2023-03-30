@@ -15,7 +15,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
-        <kotlin.version>1.8.10</kotlin.version>
+        <kotlin.version>1.8.20</kotlin.version>
 
         <spring-boot-starter-parent.version>3.0.5</spring-boot-starter-parent.version>
         <lombok.version>1.18.26</lombok.version>
