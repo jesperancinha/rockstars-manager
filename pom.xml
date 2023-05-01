@@ -23,7 +23,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <h2.version>2.1.214</h2.version>
         <cucumber.version>7.8.0</cucumber.version>
-        <cucumber-bom.version>7.11.2</cucumber-bom.version>
+        <cucumber-bom.version>7.12.0</cucumber-bom.version>
 
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
