@@ -20,7 +20,7 @@
         <spring-boot-starter-parent.version>3.1.4</spring-boot-starter-parent.version>
         <lombok.version>1.18.30</lombok.version>
 
-        <commons-io.version>2.13.0</commons-io.version>
+        <commons-io.version>2.14.0</commons-io.version>
         <h2.version>2.1.214</h2.version>
         <cucumber.version>7.8.0</cucumber.version>
         <cucumber-bom.version>7.14.0</cucumber-bom.version>
