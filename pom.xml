@@ -25,7 +25,7 @@
         <cucumber.version>7.8.0</cucumber.version>
         <cucumber-bom.version>7.14.0</cucumber-bom.version>
 
-        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <kotest-assertions-core-jvm.version>5.7.2</kotest-assertions-core-jvm.version>
         <springmockk.version>4.0.2</springmockk.version>
