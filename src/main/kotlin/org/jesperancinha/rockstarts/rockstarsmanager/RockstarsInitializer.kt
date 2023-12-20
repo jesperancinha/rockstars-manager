@@ -14,6 +14,7 @@ import org.springframework.http.*
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 import java.io.IOException
+import java.nio.charset.Charset
 import java.util.*
 import java.util.function.Predicate
 
@@ -25,6 +26,7 @@ class RockstarsInitializer(
     private val artistsRepository: ArtistsRepository
 ) : CommandLineRunner {
     private val objectMapper = ObjectMapper()
+
     @Throws(Exception::class)
     override fun run(vararg args: String) {
         val allArtists = allArtists
@@ -46,7 +48,7 @@ class RockstarsInitializer(
 
     @get:Throws(IOException::class)
     private val allArtists: ResponseEntity<Array<ArtistDto>>
-        private get() = try {
+        get() = try {
             fetchResponseEntity(
                 HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_ARTISTS_JSON,
                 Array<ArtistDto>::class.java
@@ -55,7 +57,7 @@ class RockstarsInitializer(
             ResponseEntity.of(
                 Optional.of(
                     objectMapper.readValue(
-                        IOUtils.toString(javaClass.getResourceAsStream("/artists.json")),
+                        IOUtils.toString(javaClass.getResourceAsStream("/artists.json"), Charset.defaultCharset()),
                         Array<ArtistDto>::class.java
                     )
                 )
@@ -64,13 +66,13 @@ class RockstarsInitializer(
 
     @get:Throws(IOException::class)
     private val allSongs: ResponseEntity<Array<SongDto>>
-        private get() = try {
+        get() = try {
             fetchResponseEntity(HTTPS_WWW_TEAMROCKSTARS_NL_SITES_DEFAULT_FILES_SONGS_JSON, Array<SongDto>::class.java)
         } catch (e: Exception) {
             ResponseEntity.of(
                 Optional.of(
                     objectMapper.readValue(
-                        IOUtils.toString(javaClass.getResourceAsStream("/songs.json.json")),
+                        IOUtils.toString(javaClass.getResourceAsStream("/songs.json.json"), Charset.defaultCharset()),
                         Array<SongDto>::class.java
                     )
                 )
