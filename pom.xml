@@ -18,7 +18,7 @@
         <kotlin.version>1.9.23</kotlin.version>
 
         <spring-boot-starter-parent.version>3.2.3</spring-boot-starter-parent.version>
-        <lombok.version>1.18.30</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
 
         <commons-io.version>2.15.1</commons-io.version>
         <h2.version>2.1.214</h2.version>
